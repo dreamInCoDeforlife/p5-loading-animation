@@ -12,12 +12,12 @@ var loading = true;
 var loadingAnimation;
 var loadedBkg;
 
-function loadAudioElements(filename) {
+function loadAudioElement(filename) {
   loadSound(filename, soundLoaded);
 
   function soundLoaded(sound) {
     console.log(filename);
-    songs.push();
+    songs.push(sound);
     counterSound++;
     if (counterSound == totalSongs) {
       loadingSound = true;
@@ -25,12 +25,12 @@ function loadAudioElements(filename) {
   }
 }
 
-function loadImageElements(filename) {
+function loadImageElement(filename) {
   loadImage(filename, imageLoaded);
 
   function imageLoaded(image) {
     console.log(filename);
-    images.push();
+    images.push(image);
     counterImage++;
     if (counterImage == totalImages) {
       loadingImage = true;
@@ -43,11 +43,11 @@ function setup() {
   clear();
 
   for (var i = 1; i <= totalSongs; i++) {
-    loadAudioElements("songs/music" + i + ".mp3");
+    loadAudioElement("songs/music" + i + ".mp3");
   }
 
   for (var i = 1; i <= totalImages; i++) {
-    loadImageElements("anim/anim" + i + ".png");
+    loadImageElement("anim/anim" + i + ".png");
   }
 
   loadingAnimation = select('.bubbles-wrapper');
